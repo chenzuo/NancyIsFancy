@@ -51,7 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="HomeModule.cs" />
+    <Compile Include="Models\Db.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Modules\HomeModule.cs" />
+    <Compile Include="Modules\ProductModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

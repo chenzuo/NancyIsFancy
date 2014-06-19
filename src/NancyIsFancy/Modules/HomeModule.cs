@@ -1,6 +1,6 @@
 ﻿using Nancy;
 
-namespace NancyIsFancy
+namespace NancyIsFancy.Modules
 {
     public class HomeModule : NancyModule
     {
