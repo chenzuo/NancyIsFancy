@@ -53,6 +53,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Models\Db.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Modules\FailModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Modules\ProductModule.cs" />
     <Compile Include="Program.cs" />
