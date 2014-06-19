@@ -21,7 +21,9 @@ namespace NancyIsFancy.Modules
                         queryable = queryable.Where(x => x.Name.ToLowerInvariant().Contains(query.Q.ToLowerInvariant()));
                     }
 
-                    return queryable;
+                    return Negotiate
+                        .WithModel(queryable)
+                        .WithView("index");
                 };
 
             Get["/product/{id:int}"] = _ =>

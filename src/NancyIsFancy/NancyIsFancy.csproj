@@ -68,6 +68,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <Content Include="views\Home\index.sshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="views\Product\index.sshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

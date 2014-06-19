@@ -6,7 +6,12 @@ namespace NancyIsFancy.Modules
     {
         public HomeModule()
         {
-            Get["/"] = _ =>  "Nancy is Fancy!";
+            Get["/"] = _ =>
+                {
+                    return Negotiate
+                        .WithModel("Nancy is Fancy!")
+                        .WithView("index");
+                };
         }
     }
 }

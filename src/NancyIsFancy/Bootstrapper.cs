@@ -16,6 +16,11 @@ namespace NancyIsFancy
                 {
                     Console.WriteLine("BEFORE - [{0}] {1}", ctx.Request.Method, ctx.Request.Url);
 
+                    if (ctx.Request.Headers.Accept.Any(x => x.Item1 == "text/html"))
+                    {
+                        return null;
+                    }
+
                     var superSecretHeader = ctx.Request.Headers["X-Super-Secret"].FirstOrDefault();
                     if (superSecretHeader != "NancyIsFancy!")
                     {
