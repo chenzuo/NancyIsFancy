@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using FluentValidation;
 using Nancy;
 using Nancy.ModelBinding;
 using NancyIsFancy.Models;
@@ -39,7 +40,14 @@ namespace NancyIsFancy.Modules
 
             Post["/product"] = _ =>
                 {
-                    var model = this.Bind<ProductModel>();
+                    var model = this.BindAndValidate<ProductModel>();
+
+                    if (!ModelValidationResult.IsValid)
+                    {
+                        return Negotiate
+                            .WithModel(ModelValidationResult.Errors)
+                            .WithStatusCode(HttpStatusCode.BadRequest);
+                    }
 
                     var product = new Product
                         {
@@ -58,7 +66,14 @@ namespace NancyIsFancy.Modules
                 {
                     var id = (int)_.id;
 
-                    var model = this.Bind<ProductModel>();
+                    var model = this.BindAndValidate<ProductModel>();
+
+                    if (!ModelValidationResult.IsValid)
+                    {
+                        return Negotiate
+                            .WithModel(ModelValidationResult.Errors)
+                            .WithStatusCode(HttpStatusCode.BadRequest);
+                    }
 
                     var product = new Product
                     {
@@ -91,6 +106,14 @@ namespace NancyIsFancy.Modules
         public class ProductModel
         {
             public string Name { get; set; }
+        }
+
+        public class ProductValidator : AbstractValidator<ProductModel>
+        {
+            public ProductValidator()
+            {
+                RuleFor(p => p.Name).NotNull().Length(1, 25);
+            }
         }
 
         public class ProductQuery
